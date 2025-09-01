@@ -15,7 +15,7 @@ export default function HeroSection() {
     },
     {
       delay: 0, // start immediately
-      duration: 0.15,
+      duration: 0,
       fadeOutAt: 10,
       letters: [
         "/hicm/hello-h.png",
@@ -27,27 +27,20 @@ export default function HeroSection() {
       ],
     },
     {
-      delay: 2.5, // wait 3s before starting this group
-      duration: 0.35,
+      delay: 3, // wait 3s before starting this group
+      duration: 0,
       fadeOutAt: 10,
       letters: ["/hicm/im-i.png", "/hicm/im-m.png"],
     },
     {
-      delay: 3, // "CODY" comes later
-      duration: 0.45,
+      delay: 3.6, // "CODY" comes later
+      duration: 1,
       fadeOutAt: null,
       letters: [
         "/hicm/cody-cc.png",
         "/hicm/cody-oo.png",
         "/hicm/cody-dd.png",
         "/hicm/cody-yy.png",
-      ],
-    },
-    {
-      delay: 4, // "MCLEOD" last, with longer duration
-      duration: 0.65,
-      fadeOutAt: null,
-      letters: [
         "/hicm/mcl-mm.png",
         "/hicm/mcl-cc.png",
         "/hicm/mcl-ll.png",
@@ -57,7 +50,7 @@ export default function HeroSection() {
       ],
     },
     {
-      delay: 5, // "MCLEOD" last, with longer duration
+      delay: 6, // "MCLEOD" last, with longer duration
       duration: 0,
       fadeOutAt: null,
       letters: [
@@ -76,10 +69,10 @@ export default function HeroSection() {
               key={`${gIndex}-${i}`}
               src={src}
               className="absolute top-0 left-0 w-full h-full"
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0 }}
               animate={{
                 opacity: [0, 1, group.fadeOutAt ? 0 : 1], // fade in → visible → fade out
-                scale: [0.95, 1, 1],
+                // scale: [0.95, 1, 1],
               }}
               transition={{
                 delay: group.delay + i * 0.3,
