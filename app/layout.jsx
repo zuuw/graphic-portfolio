@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 export const metadata = {
   title: "Cody McLeod Portfolio",
   description: "Pastel portfolio site",
+  icon: "zuuw-logo-04.svg"
 }
 
 export default function RootLayout({ children }) {

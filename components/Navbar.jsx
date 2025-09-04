@@ -3,8 +3,10 @@ import Link from 'next/link'
 
 export default function Navbar() {
   return (
-    <nav className="bg-zinc-800 px-6 py-4 flex justify-between items-center">
-      <h1 className="font-bold text-xl">Cody McLeod</h1>
+    <nav className="bg-zinc-800 text-white px-6 py-4 flex justify-between items-center">
+      <Link href="/">
+      <img src='zuuw-logo-04.svg' alt='' className='w-[100-px] h-[100px] sm:{w-[50px] h-[50px]}'/>
+      </Link>
       <div className="space-x-4">
         <Link href="/">Home</Link>
         <Link href="/projects">Projects</Link>
