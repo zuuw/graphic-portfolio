@@ -5,16 +5,13 @@ import { motion } from "framer-motion";
 export default function HeroSection() {
   const groups = [
     {
-        delay: .2,
-        duration: .7,
-        fadeOutAt: null,
-        letters: [
-            "/hicm/Rect1.png",
-            "/hicm/Head1.png",
-        ],
+      delay: 0.2,
+      duration: 0.7,
+      fadeOutAt: null,
+      letters: ["/hicm/Rect1.png", "/hicm/Head1.png"],
     },
     {
-      delay: 0, // start immediately
+      delay: 0,
       duration: 0,
       fadeOutAt: 10,
       letters: [
@@ -27,13 +24,13 @@ export default function HeroSection() {
       ],
     },
     {
-      delay: 3, // wait 3s before starting this group
+      delay: 3,
       duration: 0,
       fadeOutAt: 10,
       letters: ["/hicm/im-i.png", "/hicm/im-m.png"],
     },
     {
-      delay: 3.6, // "CODY" comes later
+      delay: 3.6,
       duration: 1,
       fadeOutAt: null,
       letters: [
@@ -50,45 +47,158 @@ export default function HeroSection() {
       ],
     },
     {
-      delay: 6, // "MCLEOD" last, with longer duration
+      delay: 6,
       duration: 0,
       fadeOutAt: null,
-      letters: [
-        "/hicm/mcl-endd.png",
-      ],
+      letters: ["/hicm/mcl-endd.png"],
     },
   ];
-
 
   return (
     <div className="flex justify-center">
       <div className="relative w-[1500px] h-[600px]">
         {groups.map((group, gIndex) =>
-          group.letters.map((src, i) => (
-            <motion.img
-              key={`${gIndex}-${i}`}
-              src={src}
-              className="absolute top-0 left-0 w-full h-full"
-              initial={{ opacity: 0 }}
-              animate={{
-                opacity: [0, 1, group.fadeOutAt ? 0 : 1], // fade in → visible → fade out
-                // scale: [0.95, 1, 1],
-              }}
-              transition={{
-                delay: group.delay + i * 0.3,
-                duration: group.fadeOutAt
-                  ? group.fadeOutAt - group.delay // visible until fade out
-                  : group.duration,
-                ease: "easeOut",
-                times: group.fadeOutAt ? [0, 0.2, 1] : undefined, // ensures smooth in-out
-              }}
-            />
-          ))
+          group.letters.map((src, i) => {
+            const hasFadeOut = group.fadeOutAt !== null;
+
+            return (
+              <motion.img
+                key={`${gIndex}-${i}`}
+                src={src}
+                className="absolute top-0 left-0 w-full h-full"
+                initial={{ opacity: 0, rotate: 0 }}
+                animate={{
+                  opacity: hasFadeOut ? [0, 1, 0] : [0, 1, 1],
+                  rotate: hasFadeOut ? [0, 0, 90] : [0, 0, 0], // rotates 90deg on fade-out
+                }}
+                transition={{
+                  delay: group.delay + i * 0.3,
+                  duration: hasFadeOut
+                    ? group.fadeOutAt - group.delay
+                    : group.duration,
+                  ease: "easeInOut",
+                  times: hasFadeOut ? [0, 0.7, 1] : undefined, // fade-in (0→0.7), fade-out (0.7→1)
+                }}
+              />
+            );
+          })
         )}
       </div>
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// "use client";
+
+// import { motion } from "framer-motion";
+
+// export default function HeroSection() {
+//   const groups = [
+//     {
+//         delay: .2,
+//         duration: .7,
+//         fadeOutAt: null,
+//         letters: [
+//             "/hicm/Rect1.png",
+//             "/hicm/Head1.png",
+//         ],
+//     },
+//     {
+//       delay: 0, // start immediately
+//       duration: 0,
+//       fadeOutAt: 10,
+//       letters: [
+//         "/hicm/hello-h.png",
+//         "/hicm/hello-e.png",
+//         "/hicm/hello-l.png",
+//         "/hicm/hello-l2.png",
+//         "/hicm/hello-o.png",
+//         "/hicm/hello-end.png",
+//       ],
+//     },
+//     {
+//       delay: 3, // wait 3s before starting this group
+//       duration: 0,
+//       fadeOutAt: 10,
+//       letters: ["/hicm/im-i.png", "/hicm/im-m.png"],
+//     },
+//     {
+//       delay: 3.6, // "CODY" comes later
+//       duration: 1,
+//       fadeOutAt: null,
+//       letters: [
+//         "/hicm/cody-cc.png",
+//         "/hicm/cody-oo.png",
+//         "/hicm/cody-dd.png",
+//         "/hicm/cody-yy.png",
+//         "/hicm/mcl-mm.png",
+//         "/hicm/mcl-cc.png",
+//         "/hicm/mcl-ll.png",
+//         "/hicm/mcl-ee.png",
+//         "/hicm/mcl-oo.png",
+//         "/hicm/mcl-dd.png",
+//       ],
+//     },
+//     {
+//       delay: 6, // "MCLEOD" last, with longer duration
+//       duration: 0,
+//       fadeOutAt: null,
+//       letters: [
+//         "/hicm/mcl-endd.png",
+//       ],
+//     },
+//   ];
+
+
+//   return (
+//     <div className="flex justify-center">
+//       <div className="relative w-[1500px] h-[600px]">
+//         {groups.map((group, gIndex) =>
+//           group.letters.map((src, i) => (
+//             <motion.img
+//               key={`${gIndex}-${i}`}
+//               src={src}
+//               className="absolute top-0 left-0 w-full h-full"
+//               initial={{ opacity: 0 }}
+//               animate={{
+//                 opacity: [0, 1, group.fadeOutAt ? 0 : 1], // fade in → visible → fade out
+//                 // scale: [0.95, 1, 1],
+//               }}
+//               transition={{
+//                 delay: group.delay + i * 0.3,
+//                 duration: group.fadeOutAt
+//                   ? group.fadeOutAt - group.delay // visible until fade out
+//                   : group.duration,
+//                 ease: "easeOut",
+//                 times: group.fadeOutAt ? [0, 0.2, 1] : undefined, // ensures smooth in-out
+//               }}
+//             />
+//           ))
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
 
 
 

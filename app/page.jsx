@@ -5,7 +5,7 @@ import HeroSection from "../components/HeroSection";
 export default function Home() {
   return (
     <section className="p-8 text-center">
-     <HeroSection />
+     
       
     </section>
   )
